@@ -6,6 +6,9 @@ import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
 import com.epam.module3.task3.oop.exception.NoEquipmentsException;
 import com.epam.module3.task3.oop.util.Utils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -13,11 +16,11 @@ public class ExecuteAction {
     private static final Comparator<Electronics> PRICE_COMPARATOR = (o1, o2) -> o1.getPrice().compareTo(o2.getPrice());
     private static final Comparator<Electronics> CONSUMPTION_COMPARATOR = (o1, o2) -> o1.getConsumptionPerHour().compareTo(o2.getConsumptionPerHour());
     private static boolean repeat = true;
-    private static int id = 0;
-    private static List<Electronics> list = new ArrayList<>();
 
 
-    public static boolean execute(int action) throws NoEquipmentsException, ConsumptionRangeException, EquipmentNotFoundException, IOException {
+
+
+    public static boolean execute(int action, int id, List<Electronics> list) throws NoEquipmentsException, ConsumptionRangeException, EquipmentNotFoundException, IOException {
         Scanner scanner = new Scanner(System.in);
         Utils utils = new Utils();
         switch (action) {

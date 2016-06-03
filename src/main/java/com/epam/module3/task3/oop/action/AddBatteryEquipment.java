@@ -16,7 +16,7 @@ public class AddBatteryEquipment implements AddAction {
     public Electronics addNewItem(int id) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please, enter the title:");
-        String title = scanner.next();
+        String title = scanner.nextLine();
         System.out.println("Enter the price:");
         double price = scanner.nextDouble();
         System.out.println("Enter consumption per hour:");
