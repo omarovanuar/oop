@@ -36,6 +36,8 @@ public class Runner {
                 id = Integer.valueOf(strings[0]);
                 list = CreateListFromFileAction.create(strings);
             }
+            fileReader.close();
+            bufferedReader.close();
 
             while (repeat) {
                 System.out.println("\nChoose your action:\n" +
