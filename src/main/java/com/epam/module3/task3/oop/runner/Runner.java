@@ -1,25 +1,26 @@
 package com.epam.module3.task3.oop.runner;
 
-import com.epam.module3.task3.oop.action.AddBatteryEquipment;
-import com.epam.module3.task3.oop.action.AddHighPowerEquipment;
-import com.epam.module3.task3.oop.action.AddLowPowerEquipment;
+import com.epam.module3.task3.oop.action.*;
 import com.epam.module3.task3.oop.entity.Electronics;
 import com.epam.module3.task3.oop.entity.HighPowerEquipment;
 import com.epam.module3.task3.oop.entity.LowPowerEquipment;
+import com.epam.module3.task3.oop.exception.ConsumptionRangeException;
+import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
+import com.epam.module3.task3.oop.exception.NoEquipmentsException;
 import com.epam.module3.task3.oop.util.Utils;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Runner {
-    private static final Comparator<Electronics> PRICE_COMPARATOR = (o1, o2) -> o1.getPrice().compareTo(o2.getPrice());
-    private static final Comparator<Electronics> CONSUMPTION_COMPARATOR = (o1, o2) -> o1.getConsumptionPerHour().compareTo(o2.getConsumptionPerHour());
+
 
     public static void main(String[] args) {
         boolean repeat = true;
+        boolean execute = true;
         int action = 0;
         Scanner scanner = new Scanner(System.in);
-        List<Electronics> list = new ArrayList<Electronics>();
-        Utils utils = new Utils();
+
 
         while (repeat) {
             System.out.println("\nChoose your action:\n" +
@@ -38,65 +39,14 @@ public class Runner {
             } catch (Exception e) {
                 System.out.println("Incorrect input");
             }
-            switch (action) {
-                case 0:
-                    repeat = false;
-                    break;
-                case 1:
-                    list.add(new AddBatteryEquipment().addNewItem());
-                    break;
-                case 2:
-                    list.add(new AddLowPowerEquipment().addNewItem());
-                    break;
-                case 3:
-                    list.add(new AddHighPowerEquipment().addNewItem());
-                    break;
-                case 4:
-                    double totalConsumption = 0;
-                    for (Electronics electronics : list) {
-                        if (LowPowerEquipment.class.isInstance(electronics)) {
-                            LowPowerEquipment lowPowerEquipment = (LowPowerEquipment) electronics;
-                            if (lowPowerEquipment.isPluggedIn()) {
-                                totalConsumption += lowPowerEquipment.getConsumptionPerMonth();
-                            }
-                        } else if (HighPowerEquipment.class.isInstance(electronics)) {
-                            HighPowerEquipment highPowerEquipment = (HighPowerEquipment) electronics;
-                            if (highPowerEquipment.isPluggedIn()) {
-                                totalConsumption += highPowerEquipment.getConsumptionPerMonth();
-                            }
-                        }
-                    }
-                    System.out.println(totalConsumption);
-                    break;
-                case 5:
-                    System.out.println("Enter the searching title");
-                    String title = scanner.next();
-                    List<Electronics> electronicsByTitle = utils.searchByTitle(title, list);
-                    utils.showList(electronicsByTitle);
-                    break;
-                case 6:
-                    System.out.println("Enter min of the consumption");
-                    double minConsumption = scanner.nextInt();
-                    System.out.println("Enter max of the consumption");
-                    double maxConsumption = scanner.nextInt();
-                    List<Electronics> electronicsByConsumption = utils.searchByConsumption(minConsumption, maxConsumption, list);
-                    utils.showList(electronicsByConsumption);
-                    break;
-                case 7:
-                    utils.showList(list);
-                    break;
-                case 8:
-                    Collections.sort(list, PRICE_COMPARATOR);
-                    utils.showList(list);
-                    break;
-                case 9:
-                    Collections.sort(list, CONSUMPTION_COMPARATOR);
-                    utils.showList(list);
-                    break;
-                default:
-                    System.out.println("Incorrect input, try again");
-                    break;
+            try {
+                execute = ExecuteAction.execute(action);
+            } catch (NoEquipmentsException | ConsumptionRangeException | EquipmentNotFoundException e) {
+                System.out.println(e.getMessage());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            repeat = execute;
         }
     }
 }

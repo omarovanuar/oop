@@ -3,12 +3,8 @@ package com.epam.module3.task3.oop.entity;
 public class BatteryEquipment extends Electronics {
     private int batteryNumber;
 
-    public BatteryEquipment(String title, double price, double powerConsumption) {
-        super(title, price, powerConsumption);
-    }
-
-    public BatteryEquipment(String title, double price, double powerConsumption, int batteryNumber) {
-        super(title, price, powerConsumption);
+    public BatteryEquipment(Integer id, String title, double price, double consumptionPerHour, int batteryNumber) {
+        super(id, title, price, consumptionPerHour);
         this.batteryNumber = batteryNumber;
     }
 

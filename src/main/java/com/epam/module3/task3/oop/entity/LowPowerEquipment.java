@@ -5,12 +5,8 @@ public class LowPowerEquipment extends Electronics {
     private boolean isPluggedIn;
     private double consumptionPerMonth;
 
-    public LowPowerEquipment(String title, double price, double powerConsumption) {
-        super(title, price, powerConsumption);
-    }
-
-    public LowPowerEquipment(String title, double price, double consumptionPerHour, boolean isPluggedIn) {
-        super(title, price, consumptionPerHour);
+    public LowPowerEquipment(Integer id, String title, double price, double consumptionPerHour, boolean isPluggedIn) {
+        super(id, title, price, consumptionPerHour);
         this.isPluggedIn = isPluggedIn;
         consumptionPerMonth = this.calculateConsumption();
     }

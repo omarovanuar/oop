@@ -5,12 +5,8 @@ public class HighPowerEquipment extends Electronics {
     private boolean isPluggedIn;
     private double consumptionPerMonth;
 
-    public HighPowerEquipment(String title, double price, double powerConsumption) {
-        super(title, price, powerConsumption);
-    }
-
-    public HighPowerEquipment(String title, double price, double consumptionPerHour, boolean isPluggedIn) {
-        super(title, price, consumptionPerHour);
+    public HighPowerEquipment(Integer id, String title, double price, double consumptionPerHour, boolean isPluggedIn) {
+        super(id, title, price, consumptionPerHour);
         this.isPluggedIn = isPluggedIn;
         consumptionPerMonth = this.calculateConsumption();
     }
