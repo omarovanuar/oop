@@ -6,11 +6,11 @@ import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
 import com.epam.module3.task3.oop.exception.NoEquipmentsException;
 import com.epam.module3.task3.oop.util.Utils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
 public class ExecuteAction {
     private static final Comparator<Electronics> PRICE_COMPARATOR = (o1, o2) -> o1.getPrice().compareTo(o2.getPrice());

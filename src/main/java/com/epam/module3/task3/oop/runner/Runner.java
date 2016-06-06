@@ -6,6 +6,7 @@ import com.epam.module3.task3.oop.entity.Electronics;
 import com.epam.module3.task3.oop.exception.ConsumptionRangeException;
 import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
 import com.epam.module3.task3.oop.exception.NoEquipmentsException;
+import com.epam.module3.task3.oop.interfacee.ReadInterface;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,9 +27,44 @@ public class Runner {
         String tempString;
         boolean repeat = true;
         boolean execute = true;
+        boolean repeatReading = true;
         int action = 0;
+        int read = 0;
+        ReadInterface readInterface;
         Scanner scanner = new Scanner(System.in);
         try {
+            while (repeatReading) {
+                System.out.println("Choose database, from:\n" +
+                        "1 - file\n" +
+                        "2 - h2\n" +
+                        "3 - xml\n" +
+                        "0 - exit");
+                try {
+                    read = scanner.nextInt();
+                } catch (Exception e) {
+                    System.out.println("Incorrect input");
+                }
+                switch (read) {
+                    case 1:
+                        readInterface = new ReadFromFileAction();
+                        repeatReading = false;
+                        break;
+                    case 2:
+                        readInterface = new ReadFromH2Action();
+                        repeatReading = false;
+                        break;
+                    case 3:
+                        readInterface = new ReadFromXMLACtion();
+                        repeatReading = false;
+                        break;
+                    case 0:
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Incorrect input, try again");
+                        break;
+                }
+            }
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((tempString = bufferedReader.readLine()) != null) {
