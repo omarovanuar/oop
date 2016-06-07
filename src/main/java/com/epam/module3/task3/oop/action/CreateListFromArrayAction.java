@@ -8,6 +8,11 @@ import com.epam.module3.task3.oop.entity.LowPowerEquipment;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Class CreateListFromArrayAction
+ * @method create - creates list of electronics from array of strings, that contains data about equipment current equipment
+ * @return List of electronics
+ */
 public class CreateListFromArrayAction {
     private static List<Electronics> electronics = new ArrayList<>();
 
