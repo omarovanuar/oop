@@ -6,6 +6,9 @@ public class Electronics {
     private double price;
     private double consumptionPerHour;
 
+    public Electronics() {
+    }
+
     public Electronics(Integer id, String title, double price, double consumptionPerHour) {
         this.id = id;
         this.title = title;

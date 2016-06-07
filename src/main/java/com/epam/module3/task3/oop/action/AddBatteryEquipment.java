@@ -2,15 +2,14 @@ package com.epam.module3.task3.oop.action;
 
 import com.epam.module3.task3.oop.entity.BatteryEquipment;
 import com.epam.module3.task3.oop.entity.Electronics;
-import com.epam.module3.task3.oop.interfacee.AddAction;
+import com.epam.module3.task3.oop.interfacee.AddInterface;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AddBatteryEquipment implements AddAction {
+public class AddBatteryEquipment implements AddInterface {
     private static final String FILE_PATH = "C:\\Users\\Anuar_Omarov\\IdeaProjects\\oop\\electronics-list.txt";
 
     public Electronics addNewItem(int id) throws IOException {

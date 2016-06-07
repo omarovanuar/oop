@@ -17,9 +17,6 @@ public class ExecuteAction {
     private static final Comparator<Electronics> CONSUMPTION_COMPARATOR = (o1, o2) -> o1.getConsumptionPerHour().compareTo(o2.getConsumptionPerHour());
     private static boolean repeat = true;
 
-
-
-
     public static boolean execute(int action, int id, List<Electronics> list) throws NoEquipmentsException, ConsumptionRangeException, EquipmentNotFoundException, IOException {
         Scanner scanner = new Scanner(System.in);
         Utils utils = new Utils();

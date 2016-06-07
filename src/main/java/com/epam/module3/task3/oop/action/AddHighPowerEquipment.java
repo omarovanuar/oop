@@ -2,14 +2,14 @@ package com.epam.module3.task3.oop.action;
 
 import com.epam.module3.task3.oop.entity.Electronics;
 import com.epam.module3.task3.oop.entity.HighPowerEquipment;
-import com.epam.module3.task3.oop.interfacee.AddAction;
+import com.epam.module3.task3.oop.interfacee.AddInterface;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AddHighPowerEquipment implements AddAction {
+public class AddHighPowerEquipment implements AddInterface {
     private static final String FILE_PATH = "C:\\Users\\Anuar_Omarov\\IdeaProjects\\oop\\electronics-list.txt";
 
     public Electronics addNewItem(int id) throws IOException {
