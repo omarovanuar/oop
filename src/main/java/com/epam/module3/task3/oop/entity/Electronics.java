@@ -33,6 +33,32 @@ public class Electronics {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Electronics that = (Electronics) o;
+
+        if (Double.compare(that.price, price) != 0) return false;
+        if (Double.compare(that.consumptionPerHour, consumptionPerHour) != 0) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        return title != null ? title.equals(that.title) : that.title == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(consumptionPerHour);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public String toString() {
         return  "id = " + id  +
                 ", title = " + title  +

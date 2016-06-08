@@ -17,6 +17,25 @@ public class BatteryEquipment extends Electronics {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        BatteryEquipment that = (BatteryEquipment) o;
+
+        return batteryNumber == that.batteryNumber;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + batteryNumber;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "BatteryEquipment: " + super.toString() +
                 ", batteryNumber = " + batteryNumber;

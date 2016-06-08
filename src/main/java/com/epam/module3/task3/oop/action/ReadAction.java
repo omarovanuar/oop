@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class ReadAction {
     private static boolean repeatReading = true;
     private static ReadInterface readInterface;
-    private static Scanner scanner = new Scanner(System.in);
 
     public static ReadInterface getReadInterface() {
         int readInt;
@@ -18,7 +17,7 @@ public class ReadAction {
                     "3 - xml\n" +
                     "0 - exit");
             try {
-                readInt = scanner.nextInt();
+                readInt = new Scanner(System.in).nextInt();
             } catch (Exception e) {
                 System.out.println("Incorrect input");
                 continue;

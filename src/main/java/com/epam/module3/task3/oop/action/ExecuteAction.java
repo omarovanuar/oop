@@ -4,7 +4,7 @@ import com.epam.module3.task3.oop.entity.Electronics;
 import com.epam.module3.task3.oop.exception.ConsumptionRangeException;
 import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
 import com.epam.module3.task3.oop.exception.NoEquipmentsException;
-import com.epam.module3.task3.oop.util.Utils;
+import com.epam.module3.task3.oop.util.Util;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -19,7 +19,7 @@ public class ExecuteAction {
 
     public static boolean execute(int action, int id, List<Electronics> list) throws NoEquipmentsException, ConsumptionRangeException, EquipmentNotFoundException, IOException {
         Scanner scanner = new Scanner(System.in);
-        Utils utils = new Utils();
+        Util utils = new Util();
         switch (action) {
             case 0:
                 repeat = false;

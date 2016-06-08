@@ -8,7 +8,7 @@ import com.epam.module3.task3.oop.exception.NoEquipmentsException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Utils {
+public class Util {
 
     public List<Electronics> searchByTitle(String title, List<Electronics> list) throws EquipmentNotFoundException {
         List<Electronics> result = new ArrayList<>();
@@ -20,7 +20,7 @@ public class Utils {
         if (result.size() == 0)
             throw new EquipmentNotFoundException(title);
 
-        return  result;
+        return result;
     }
 
     public List<Electronics> searchByConsumption(double minConsumption, double maxConsumption, List<Electronics> list) throws ConsumptionRangeException {

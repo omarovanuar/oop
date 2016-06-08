@@ -24,6 +24,28 @@ public class HighPowerEquipment extends Electronics {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HighPowerEquipment that = (HighPowerEquipment) o;
+
+        if (isPluggedIn != that.isPluggedIn) return false;
+        return Double.compare(that.consumptionPerMonth, consumptionPerMonth) == 0;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = (isPluggedIn ? 1 : 0);
+        temp = Double.doubleToLongBits(consumptionPerMonth);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "HighPowerEquipment: " + super.toString() +
                 ", isPluggedIn = " + isPluggedIn;
