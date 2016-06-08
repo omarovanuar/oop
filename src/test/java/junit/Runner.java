@@ -10,6 +10,11 @@ public class Runner {
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(SuiteTest.class);
         List<Failure> failures = result.getFailures();
-        failures.forEach(System.out::println);
+        System.out.println("\nFailures:");
+        for (Failure failure : failures) {
+            System.out.println(failure + "\n");
+        }
+        System.out.println("Tests number: " + result.getRunCount());
+        System.out.println("Failured: " + result.getFailureCount());
     }
 }

@@ -9,6 +9,7 @@ import com.epam.module3.task3.oop.exception.EquipmentNotFoundException;
 import com.epam.module3.task3.oop.exception.NoEquipmentsException;
 import com.epam.module3.task3.oop.util.Util;
 import org.junit.*;
+import org.junit.experimental.categories.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class UtilTest {
     }
 
     @Test(expected = NoEquipmentsException.class)
+    @Category(ExceptionTests.class)
     public void testShowList() throws NoEquipmentsException {
         util.showList(new ArrayList<>());
     }
